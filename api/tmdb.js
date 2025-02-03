@@ -28,13 +28,13 @@ export async function getLatestMovies() {
 
 export async function getMovieDetails(id) {
   const API_KEY = '4ff4aa8b7fbe0121991122d6041cfb66';
-  const MOVIE_DETAILS = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&append_to_response=reviews`;
+  const MOVIE_DETAILS = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=es-ES&append_to_response=reviews`;
   const IMAGEN_PLACEHOLDER = 'https://media.istockphoto.com/id/1147544807/es/vector/no-imagen-en-miniatura-gr%C3%A1fico-vectorial.jpg?s=612x612&w=0&k=20&c=Bb7KlSXJXh3oSDlyFjIaCiB9llfXsgS7mHFZs6qUgVk='
 
   const rawData = await fetch(MOVIE_DETAILS);
   const json = await rawData.json();
 
-  const { title, overview, vote_average, poster_path, reviews } = json;
+  const { title, overview, release_date, vote_average, poster_path, reviews } = json;
 
   const posterUrl = poster_path
       ? `https://image.tmdb.org/t/p/w500/${poster_path}`
@@ -45,7 +45,6 @@ export async function getMovieDetails(id) {
       quote: review.content,
       score: review.author_details.rating,
       date: review.created_at,
-      publicationName: 'Review TMDB',
       author: review.author
     };
   });
@@ -54,8 +53,9 @@ export async function getMovieDetails(id) {
     posterUrl,
     title,
     id,
+    releaseDate: release_date,
     description: overview,
-    score: vote_average,
+    rating: vote_average,
     reviews: formattedReviews,
   };
 }

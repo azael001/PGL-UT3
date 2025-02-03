@@ -1,58 +1,64 @@
+import React from 'react';
 import { Link } from "expo-router";
-import { Pressable, ScrollView, Text } from "react-native";
+import { Pressable, ScrollView, Text, View, StyleSheet } from "react-native";
 import { HomeIcon } from "../../components/Icons";
 import { Screen } from "../../components/Screen";
 
 export default function About() {
   return (
     <Screen>
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.header}>
+          <Link asChild href="/">
+            <Pressable>
+              {({ pressed }) => <HomeIcon style={[styles.homeIcon, pressed && styles.homeIconPressed]} />}
+            </Pressable>
+          </Link>
+          <Text style={styles.title}>Sobre el proyecto</Text>
+        </View>
 
-        <Link asChild href="/">
-        <Pressable>
-          {({ pressed }) => <HomeIcon style={{ color: pressed ? 'grey' : 'black' }}/>}
-        </Pressable>
-      </Link>
-
-        <Text className="text-white font-bold mb-8 text-2xl">
-          Sobre el proyecto
+        <Text style={styles.paragraph}>
+          Diseñada para cinéfilos y curiosos, nuestra plataforma te permite explorar 
+          un catálogo dinámico y actualizado de películas de todos los géneros y épocas. 
+          Desde clásicos inolvidables hasta los últimos estrenos, tenemos algo para cada gusto.
         </Text>
 
-        <Text className="text-white text-white/90 mb-4">
-          lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea
-        </Text>
-
-        <Text className="text-white text-white/90 mb-4">
-          lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea
-        </Text>
-
-        <Text className="text-white text-white/90 mb-4">
-          lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea
-        </Text>
-
-        <Text className="text-white text-white/90 mb-4">
-          lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea
-        </Text>
-
-        <Text className="text-white text-white/90 mb-4">
-          lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea
+        <Text style={styles.paragraph}>
+          Nuestro compromiso es conectarte con el mundo del cine, facilitando el 
+          descubrimiento de nuevas historias y permitiéndote encontrar tu próxima 
+          película favorita con solo unos toques.
         </Text>
       </ScrollView>
     </Screen>
   );
 }
+
+const styles = StyleSheet.create({
+  scrollContainer: {
+    padding: 20,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  homeIcon: {
+    color: 'white',
+    marginRight: 15,
+  },
+  homeIconPressed: {
+    color: 'grey',
+  },
+  title: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 24,
+    flex: 1,
+  },
+  paragraph: {
+    color: 'rgba(255, 255, 255, 0.9)',
+    marginBottom: 16,
+    fontSize: 16,
+    lineHeight: 24,
+  },
+});

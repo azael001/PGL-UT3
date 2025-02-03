@@ -1,5 +1,44 @@
-import { View } from "react-native";
+import React from 'react';
+import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
+import { useRouter } from 'expo-router';
 
 export function Screen({ children }) {
-  return <View className="flex-1 bg-black pt-4 px-2">{children}</View>;
+  const router = useRouter();
+
+  return (
+    <View style={styles.container}>
+      {children}
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity style={styles.button} onPress={() => router.push('/')}>
+          <Text style={styles.buttonText}>Back</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+    paddingTop: 16,
+    paddingHorizontal: 8,
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 20,
+    left: 0,
+    right: 0,
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: '#333',
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 16,
+  },
+});

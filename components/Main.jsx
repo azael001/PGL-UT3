@@ -25,7 +25,7 @@ export function Main() {
 
       <Link asChild href="/about">
         <Pressable>
-          {({ pressed }) => <CircleInfoIcon style={{ color: pressed ? 'grey' : 'black' }}/>}
+          {({ pressed }) => <CircleInfoIcon style={{ color: pressed ? 'grey' : 'white' }}/>}
         </Pressable>
       </Link>
       

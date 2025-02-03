@@ -7,8 +7,10 @@ export function MovieCard({ Movie }) {
     <Link href={`/${Movie.id}`} asChild>
         <View style={styles.card} key={Movie.id}>
           <Image style={styles.image} source={{ uri: Movie.posterUrl }}/>
-          <Text className="mb-1" style={styles.title}>{Movie.title}</Text>
           <Puntuacion puntuacionActual={Movie.rating} puntuacionMaxima={100}/>
+          
+          <Text className="mb-1" style={styles.title}>{Movie.title}</Text>
+          <Text className="mb-1" style={styles.releaseDate}>{Movie.releaseDate}</Text>
           <Text className="mt-2 flex-shrink" style={styles.overview}>{Movie.overview.slice(0, 100)}...</Text>
         </View>
     </Link>
@@ -30,6 +32,12 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 20,
+    fontWeight: "bold",
+    color: "#fff",
+    marginTop: 10,
+  },
+  releaseDate: {
+    fontSize: 15,
     fontWeight: "bold",
     color: "#fff",
     marginTop: 10,
