@@ -1,4 +1,3 @@
-import { Link } from "expo-router";
 import { ActivityIndicator, Image, ScrollView, Text, View } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { Screen } from "../components/Screen";
@@ -8,14 +7,15 @@ import { getMovieDetails } from "../api/tmdb";
 import { Puntuacion } from "../components/Puntuacion";
 
 export default function Detail() {
-  const { movieslug } = useLocalSearchParams();
+  const { movie_id } = useLocalSearchParams();
   const [movieInfo, setMovieInfo] = useState(null);
 
   useEffect(() => {
-    if (movieslug) {
-      getMovieDetails(movieslug).then(setMovieInfo);
+    if (movie_id) {
+      console.log(movie_id)
+      getMovieDetails(movie_id).then(setMovieInfo);
     }
-  }, [movieslug]);
+  }, [movie_id]);
 
   return (
     <Screen>

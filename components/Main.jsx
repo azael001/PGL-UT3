@@ -18,14 +18,14 @@ export function Main() {
   }, []);
 
   return (
-    <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom }}>
+    <View style={{ paddingTop: insets.top, paddingBottom: insets.bottom, flex: 1, backgroundColor: 'black' }}>
       <View style={{ marginBottom: 20 }}>
         <Logo />
       </View>
 
       <Link asChild href="/about">
         <Pressable>
-          {({ pressed }) => <CircleInfoIcon style={{ opacity : pressed ? 0.5 : 1 }}/>}
+          {({ pressed }) => <CircleInfoIcon style={{ color: pressed ? 'grey' : 'black' }}/>}
         </Pressable>
       </Link>
       
@@ -36,13 +36,13 @@ export function Main() {
           {Platform.OS === 'web' ? (
             <View style={{ paddingVertical: 20 }}>
               {Movies.map((Movie, index) => (
-                <MovieCard key={Movie.slug} Movie={Movie} index={index} />
+                <MovieCard key={Movie.id} Movie={Movie} index={index} />
               ))}
             </View>
           ) : (
             <FlatList
               data={Movies}
-              keyExtractor={(Movie) => Movie.slug}
+              keyExtractor={(Movie) => Movie.id}
               renderItem={({ item, index }) => (
                 <MovieCard Movie={item} index={index} />
               )}
