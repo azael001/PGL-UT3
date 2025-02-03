@@ -12,3 +12,4 @@
 * ```npx expo install expo-router react-native-safe-area-context react-native-screens expo-linking expo-constants expo-status-bar```
 * ```npm install @expo/vector-icons```
 * ```npm install --save-dev prettier```
+* ```npm install firebase @react-native-firebase/app @react-native-firebase/auth```
