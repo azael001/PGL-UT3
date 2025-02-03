@@ -1,13 +1,14 @@
 import { useEffect, useRef } from "react";
 import { View, StyleSheet, Text, Image, Animated } from "react-native";
+import { Puntuacion } from "./Puntuacion";
 
 export function MovieCard({ Movie }) {
   return (
-    <View key={Movie.slug} style={styles.card}>
+    <View className="bg-slate-500/10 p-4 rounded-xl gap-4 mb-10" key={Movie.slug}>
       <Image style={styles.image} source={{ uri: Movie.posterUrl }}/>
-      <Text  style={styles.title}>{Movie.title}</Text>
-      <Text  style={styles.rating}>{Movie.rating}</Text>
-      <Text  style={styles.overview}>{Movie.overview}</Text>
+      <Text className="mb-1" style={styles.title}>{Movie.title}</Text>
+      <Puntuacion puntuacionActual={Movie.rating} puntuacionMaxima={100}/>
+      <Text className="mt-2 flex-shrink" style={styles.overview}>{Movie.overview.slice(0, 100)}</Text>
     </View>
   );
 }
