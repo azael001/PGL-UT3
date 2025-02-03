@@ -9,7 +9,7 @@ export default function About() {
     <Screen>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.header}>
-          <Link asChild href="/">
+          <Link asChild href="/home">
             <Pressable>
               {({ pressed }) => <HomeIcon style={[styles.homeIcon, pressed && styles.homeIconPressed]} />}
             </Pressable>

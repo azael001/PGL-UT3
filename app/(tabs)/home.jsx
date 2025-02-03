@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "expo-router";
 import { FlatList, View, ActivityIndicator, Platform, StyleSheet, Pressable } from "react-native";
-import { getLatestMovies } from "../api/tmdb";
+import { getLatestMovies } from "../../api/tmdb";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { MovieCard } from "./MovieCard";
-import { Logo } from "./Logo";
-import { CircleInfoIcon } from "./Icons";
+import { MovieCard } from "../../components/MovieCard";
+import { Logo } from "../../components/Logo";
+import { CircleInfoIcon } from "../../components/Icons";
 
-export function Main() {
+export function Home() {
   const [Movies, setMovies] = useState([]);
   const insets = useSafeAreaInsets();
 
