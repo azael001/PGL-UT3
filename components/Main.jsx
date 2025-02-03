@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-
-import { FlatList, View, ActivityIndicator, Platform, StyleSheet } from "react-native";
+import { Link } from "expo-router";
+import { FlatList, View, ActivityIndicator, Platform, StyleSheet, Pressable } from "react-native";
 import { getLatestMovies } from "../api/tmdb";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { MovieCard } from "./MovieCard";
 import { Logo } from "./Logo";
+import { CircleInfoIcon } from "./Icons";
 
 export function Main() {
   const [Movies, setMovies] = useState([]);
@@ -21,6 +22,12 @@ export function Main() {
       <View style={{ marginBottom: 20 }}>
         <Logo />
       </View>
+
+      <Link asChild href="/about">
+        <Pressable>
+          {({ pressed }) => <CircleInfoIcon style={{ opacity : pressed ? 0.5 : 1 }}/>}
+        </Pressable>
+      </Link>
       
       {Movies.length === 0 ? (
         <ActivityIndicator color={"#fff"} size={"large"} />
